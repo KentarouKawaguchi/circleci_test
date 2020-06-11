@@ -1,22 +1,22 @@
-version:2
+version: 2
 jobs:
     docker:
-        - image:'982237318241.dkr.ecr.us-east-1.amazonaws.com/einguo-w:YYYY-MM-DD'
+        - image: '982237318241.dkr.ecr.us-east-1.amazonaws.com/einguo-w:YYYY-MM-DD'
     steps:
         - checkout
-        - run: 
-            name:Maven Clean
-            command:mvn clean
-        - run: 
-            name:Maven Build
-            command:mvn package -DskipTests=true
+        - run:
+            name: Maven Clean
+            command: mvn clean
+        - run:
+            name: Maven Build
+            command: mvn package -DskipTests=true
         - store_artifacts:
-            path:repository/target/target/webconsole-0.0.1-SNAPSHOT.jar
+            path: repository/target/target/webconsole-0.0.1-SNAPSHOT.jar
 workflows:
-    version:2
+    version: 2
     maven_test:
-        jobs:2
+        jobs:
             - build:
                 filters:
                     branches:
-                        only:jp-dev
+                        only: jp-dev
